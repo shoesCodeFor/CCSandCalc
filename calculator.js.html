@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CC Sand & Stone Materials Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+</head>
+<body>
+    <h3>Materials Calculator</h3>
+    <!-- Navigation for the calculator -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a data-toggle="tab" class="nav-link active" href="#stoneWall" aria-controls="home" aria-selected="true">Tons of Stone Required
+                For Stone Walls</a>
+        </li>
+        <li class="nav-item">
+            <a data-toggle="tab" class="nav-link" href="#flagstone" aria-controls="home" aria-selected="false">Flagstone Required
+                For Patio Installation</a>
+        </li>
+        <li class="nav-item">
+            <a data-toggle="tab" class="nav-link" href="#" aria-controls="home" aria-selected="false">Roadbase Fill Required
+                For Patio Base</a>
+        </li>
+        <li class="nav-item">
+            <a data-toggle="tab" class="nav-link" href="#" aria-controls="home" aria-selected="false">Bark Mulch Required
+                For Plant Bed Mulching</a>
+        </li>
+        <li class="nav-item">
+            <a data-toggle="tab" class="nav-link" href="#"aria-controls="home" aria-selected="false">Stone Mulch Required
+                For Plant Beds</a>
+        </li>
+        <li class="nav-item">
+            <a data-toggle="tab" class="nav-link" href="#" aria-controls="home" aria-selected="false">Topsoil Required
+                For Fill</a>
+        </li>
+    </ul>
+    <!-- Wrapper for tabbed content -->
+    <div class="tab-content" id="myTabContent">
+
+        <!-- Tab Pane for Stone Wall calculator -->
+        <div class="container tab-pane fade show active" id="stoneWall" role="tabpanel" aria-labelledby="stoneWall-tab">
+            <!-- Start of form wrapper -->
+            <div class=""><!-- row justify-content-center -->
+                <!-- The name of the Form -->
+                <form id="WallMaterials">
+                    <div class="form-group-row">
+                    </div>
+                    <!-- Length Elements: Label, Radio and Input -->
+                    <div class="form-group-row">
+                        <label for="length" class="col-sm-2 col-form-label">Length:</label>
+                        <!-- Radioboxes feet and inches selectors -->
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="wallLengthUnits" id="wallLengthUnitFt" value="12" checked> Feet
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="wallLengthUnits" id="wallLengthUnitIn" value="1"> Inches
+                            </label>
+                        </div>
+                        <!-- End of radioboxes -->
+                        <!-- Start of input -->
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="length" placeholder="Length in Feet">
+                        </div>
+                    </div>
+                    <!-- End of Length Elements -->
+
+                    <!-- Wall Height Elements: Label, Radio and Input -->
+                    <div class="form-group-row">
+                        <label for="wallHeight" class="col-sm-2 col-form-label">Height:</label>
+                        <!-- Radioboxes feet and inches selectors -->
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="wallHeightUnits" id="wallHeightUnitFt" value="12" checked> Feet
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="wallHeightUnits" id="wallHeightUnitIn" value="1"> Inches
+                            </label>
+                        </div>
+                        <!-- End of radioboxes -->
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="wallHeight" placeholder="Height in Feet">
+                        </div>
+                    </div>
+                    <!-- End of Wall Height Elements -->
+
+                    <!-- Thickness or Depth Elements: Label, Radio and Input -->
+                    <div class="form-group-row">
+                        <label for="wallThickness" class="col-sm-2 col-form-label">Thickness:</label>
+                        <!-- Radioboxes feet and inches selectors -->
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="wallLengthUnits" id="wallLengthUnitFt" value="12" checked> Feet
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="wallLengthUnits" id="wallLengthUnitIn" value="1"> Inches
+                            </label>
+                        </div>
+                        <!-- End of radioboxes -->
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="wallThickness" placeholder="Thickness in Inches">
+                        </div>
+                        <br>
+                    </div>
+                    <!-- End of Thickness or Depth Element -->
+
+                    <div class="form-group-row">
+
+                    </div>
+                    <!-- Calculate button (Will kick off functions to perform calcs) -->
+                    <div class="form-group-row">
+                        <div class="col-auto">
+                            <button class="btn btn-primary">
+                                Calculate
+                            </button>
+                        </div>
+                    </div>
+                    <!-- End of Calc Button -->
+                </form>
+            </div>
+            <!-- End of form wrapper -->
+        </div>
+        <!-- End of Stonewall Calculator Tab Pane -->
+
+
+
+        <div class="container-fluid tab-pane fade" id="flagstone" role="tabpanel" aria-labelledby="stoneWall-tab">
+            <div class=""><!-- row justify-content-center -->
+                <form id="WalllMaterials">
+                    <div class="form-group-row">
+                        <h3>Materials Calculator</h3>
+                    </div>
+                    <div class="form-group-row">
+                        <label for="length" class="col-sm-2 col-form-label">Length:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="length" placeholder="Length in Feet">
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label for="wallHeight" class="col-sm-2 col-form-label">Height:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="wallHeight" placeholder="Height in Feet">
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label for="wallThickness" class="col-sm-2 col-form-label">Thickness:</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="wallThickness" placeholder="Thickness in Inches">
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+
+                    </div>
+                    <div class="form-group-row">
+                        <div class="col-auto">
+                            <button class="btn btn-primary" id="performCalc">
+                                Calculate
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div><!-- End of Stonewall Calculator Div -->
+
+    </div>
+    <!-- End of wrapper for Tabbed content -->
+
+
+
+</body>
+
+<footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="functions.js"></script>
+</footer>
+</html>
