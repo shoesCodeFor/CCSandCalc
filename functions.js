@@ -1,3 +1,26 @@
+/*
+*  Materials Calculator for CC Sand and Stone
+*  By Schuyler Ankele - Busy Bee Web Applications
+*  11/06/2107
+*  Schuyler.ankele@gmail.com
+*
+*  Dependencies - jQuery 3+ and Bootstrap 4
+*
+* */
+
+
+// Debugging function for seeing all contents of a form
+function formDump(idOfForm){
+    try{
+        const form = $(idOfForm);
+        console.table(form);
+        console.log(form);
+    }
+    catch (error){
+        alert(error);
+    }
+}
+
 function getFormVals(divSelector){
     const formSelection = $(divSelector);
     valueArray = [];
