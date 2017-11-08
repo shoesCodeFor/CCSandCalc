@@ -33,6 +33,7 @@
  *  Volume in Cubic In (1728 per cubic feet)
  *  Volume in Cubic Ft (27 Cubic feet is Yard)
 **/
+
 var form = new Object();
 
 // Debugging function for seeing all contents of a form
@@ -51,8 +52,10 @@ function formDump(idOfForm){
 
 // Get form vals take our fields and make them into a 3-D object
 function getFormVals(divSelector){
-    const formSelection = $(divSelector);
 
+    const formSelection = $('#'+divSelector);
+
+    console.log(formSelection);
     try{
         // Default Values
         form.LengthMultiplier = 1;
@@ -85,27 +88,46 @@ function getFormVals(divSelector){
 
     console.log(form);
     
-    // return form;
+    return form;
 }
 
-function boulderWallVals(formID){
-    const valueArray = getFormVals(formID);
-    const length = valueArray[0];
-    const height = valueArray[1];
-    const thickness = valueArray[2];
-    boulderWallVol(length, height, thickness);
-}
+function boulderWallVol(formID){
+    const capturedForm = getFormVals(formID);
+    const length = capturedForm.Length * capturedForm.LengthMultiplier;
+    const height = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
 
-function boulderWallVol(length, height, thickness){
-    // ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
     // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
     // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
     const l = parseFloat(length);
     const h = parseFloat(height);
     const th = parseFloat(thickness);
+    */
 
-
-    const amtOfStone = ((l * h * th)/27) * 1.25;
+    const amtOfStone = ((length * height * thickness)/27) * 1.25;
     console.log(amtOfStone);
-    return amtOfStone;
+    $('#'+formID+'Result').html('((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25 =<br><b>' + amtOfStone + '</b> Cu. Inches');
+    // return amtOfStone;
+}
+
+function flagstoneFormula(formID){
+    const capturedForm = getFormVals(formID);
+    const length = capturedForm.Length * capturedForm.LengthMultiplier;
+    const height = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
+
+    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
+    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
+    const l = parseFloat(length);
+    const h = parseFloat(height);
+    const th = parseFloat(thickness);
+    */
+
+    // Calculation Formula
+    const amtOfStone = ((length * height * thickness)/27) * 1.25;
+    console.log(amtOfStone);
+    $('#'+formID+'Result').html('((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25 =<br><b>' + amtOfStone + '</b> Cu. Inches');
+    // return amtOfStone;
 }
