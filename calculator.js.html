@@ -245,22 +245,22 @@
                     </div>
                     <!-- Length Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="length" class="col-sm-2 col-form-label">Length:</label>
+                        <label for="RoadbaseLength" class="col-sm-2 col-form-label">Length:</label>
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="PatioLengthUnits" id="PatioLengthUnitFt" value="12" checked> Feet
+                                <input class="form-check-input" type="radio" name="PatioLengthUnits" id="RoadbaseLengthUnitFt" value="12" checked> Feet
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="PatioLengthUnits" id="PatioLengthUnitIn" value="1"> Inches
+                                <input class="form-check-input" type="radio" name="PatioLengthUnits" id="RoadbaseLengthUnitIn" value="1"> Inches
                             </label>
                         </div>
                         <!-- End of radioboxes -->
                         <!-- Start of input -->
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="PatioLength" placeholder="Length in Feet" required>
+                            <input type="number" class="form-control" id="RoadbaseLength" placeholder="Length in Feet" required>
                         </div>
                     </div>
                     <!-- End of Length Elements -->
@@ -271,17 +271,17 @@
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="PatioWidthUnits" id="PatioWidthUnitFt" value="12" checked> Feet
+                                <input class="form-check-input" type="radio" name="PatioWidthUnits" id="RoadbaseWidthUnitFt" value="12" checked> Feet
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="PatioWidthUnits" id="PatioWidthUnitIn" value="1"> Inches
+                                <input class="form-check-input" type="radio" name="PatioWidthUnits" id="RoadbaseWidthUnitIn" value="1"> Inches
                             </label>
                         </div>
                         <!-- End of radioboxes -->
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="PatioWidth" placeholder="Height in Feet" required>
+                            <input type="number" class="form-control" id="RoadbaseWidth" placeholder="Height in Feet" required>
                         </div>
                     </div>
                     <!-- End of Width Elements -->
@@ -292,17 +292,17 @@
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="FlagstoneThicknessUnits" id="FlagstoneThicknessUnitFt" value="12" checked> Feet
+                                <input class="form-check-input" type="radio" name="RoadbaseThicknessUnits" id="RoadbaseThicknessUnitFt" value="12" checked> Feet
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="FlagstoneThicknessUnits" id="FlagstoneThicknessUnitIn" value="1"> Inches
+                                <input class="form-check-input" type="radio" name="RoadbaseThicknessUnits" id="RoadbaseThicknessUnitIn" value="1"> Inches
                             </label>
                         </div>
                         <!-- End of radioboxes -->
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="FlagstoneThickness" placeholder="Thickness in Inches" required>
+                            <input type="number" class="form-control" id="RoadbaseThickness" placeholder="Thickness in Inches" required>
                         </div>
                         <br>
                     </div>
@@ -314,7 +314,7 @@
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
                         <div class="col-auto">
-                            <button class="btn btn-primary" onclick="flagstonePatioVol('FlagstoneMaterial')">
+                            <button class="btn btn-primary" onclick="roadbaseFillVol('FlagstoneMaterial')">
                                 Calculate
                             </button>
                         </div>
@@ -322,7 +322,7 @@
                     <!-- End of Calc Button -->
                     <!-- Results field -->
                     <div class="calculationResult">
-                        <h3 id="FlagstoneMaterialResult"></h3>
+                        <h3 id="RoadbaseMaterialResult"></h3>
                     </div>
                     <!--End of Results -->
                 </form>
