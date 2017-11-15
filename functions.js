@@ -104,14 +104,17 @@ function boulderWallVol(formID){
     const h = parseFloat(height);
     const th = parseFloat(thickness);
     */
-
+    const cuInches = length * height * thickness;
+    const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+        +' <br><b>Cu Yards</b>' + cuYards);
     const amtOfStone = ((length * height * thickness)/27) * 1.25;
     console.log(amtOfStone);
-    $('#'+formID+'Result').html('((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25 =<br><b>' + amtOfStone + '</b> Cu. Inches');
     // return amtOfStone;
 }
 
-function flagstoneFormula(formID){
+function flagstonePatioVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;
     const height = capturedForm.Width * capturedForm.WidthMultiplier;
@@ -124,10 +127,88 @@ function flagstoneFormula(formID){
     const h = parseFloat(height);
     const th = parseFloat(thickness);
     */
+    const cuInches = length * height * thickness;
+    const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+        +' <br><b>Cu Yards</b>' + cuYards);
+}
 
-    // Calculation Formula
-    const amtOfStone = ((length * height * thickness)/27) * 1.25;
-    console.log(amtOfStone);
-    $('#'+formID+'Result').html('((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25 =<br><b>' + amtOfStone + '</b> Cu. Inches');
-    // return amtOfStone;
+function roadbaseFillVol(formID){
+    const capturedForm = getFormVals(formID);
+    const length = capturedForm.Length * capturedForm.LengthMultiplier;
+    const height = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
+
+    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
+    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
+    const l = parseFloat(length);
+    const h = parseFloat(height);
+    const th = parseFloat(thickness);
+    */
+    const cuInches = length * height * thickness;
+    const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+        +' <br><b>Cu Yards: </b>' + cuYards);
+}
+function barkMulchVol(formID){
+    const capturedForm = getFormVals(formID);
+    const length = capturedForm.Length * capturedForm.LengthMultiplier;
+    const height = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
+
+    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
+    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
+    const l = parseFloat(length);
+    const h = parseFloat(height);
+    const th = parseFloat(thickness);
+    */
+    const cuInches = length * height * thickness;
+    const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+        +' <br><b>Cu Yards: </b>' + cuYards);
+}
+function stoneMulchVol(formID){
+    const capturedForm = getFormVals(formID);
+    const length = capturedForm.Length * capturedForm.LengthMultiplier;
+    const height = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
+
+    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
+    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
+    const l = parseFloat(length);
+    const h = parseFloat(height);
+    const th = parseFloat(thickness);
+    */
+    const cuInches = length * height * thickness;
+    const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+        +' <br><b>Cu Yards: </b>' + cuYards);
+}
+
+
+function topsoilFillVol(formID){
+    const capturedForm = getFormVals(formID);
+    const length = capturedForm.Length * capturedForm.LengthMultiplier;
+    const height = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
+
+    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
+    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
+    const l = parseFloat(length);
+    const h = parseFloat(height);
+    const th = parseFloat(thickness);
+    */
+    const cuInches = length * height * thickness;
+    const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+        +' <br><b>Cu Yards</b>' + cuYards);
 }

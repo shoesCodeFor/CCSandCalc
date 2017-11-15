@@ -294,7 +294,7 @@
 
                     <!-- Thickness or Depth Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="FlagstoneThickness" class="col-sm-2 col-form-label">Roadbase Fill Depth:</label>
+                        <label for="RoadbaseThickness" class="col-sm-2 col-form-label">Roadbase Fill Depth:</label>
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
@@ -320,7 +320,7 @@
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
                         <div class="col-auto">
-                            <button class="btn btn-primary" onclick="roadbaseFillVol('FlagstoneMaterial')">
+                            <button class="btn btn-primary" onclick="roadbaseFillVol('RoadbaseMaterial')">
                                 Calculate
                             </button>
                         </div>
@@ -420,7 +420,7 @@
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
                         <div class="col-auto">
-                            <button class="btn btn-primary" onclick="roadbaseFillVol('FlagstoneMaterial')">
+                            <button class="btn btn-primary" onclick="barkMulchVol('BarkMulchMaterial')">
                                 Calculate
                             </button>
                         </div>
@@ -441,7 +441,7 @@
 
         <div class="container tab-pane fade" id="stoneMulch" role="tabpanel" aria-labelledby="stoneWall-tab">
             <!-- Start of form wrapper -->
-            <h3>Roadbase Fill</h3>
+            <h3>Stone Mulch Fill</h3>
             <div class=""><!-- row justify-content-center -->
                 <!-- The name of the Form -->
                 <form id="StoneMulchMaterial" action="" onsubmit="return false">
@@ -518,7 +518,7 @@
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
                         <div class="col-auto">
-                            <button class="btn btn-primary" onclick="roadbaseFillVol('FlagstoneMaterial')">
+                            <button class="btn btn-primary" onclick="stoneMulchVol('StoneMulchMaterial')">
                                 Calculate
                             </button>
                         </div>
@@ -539,7 +539,7 @@
 
         <div class="container tab-pane fade" id="topsoilTab" role="tabpanel" aria-labelledby="stoneWall-tab">
             <!-- Start of form wrapper -->
-            <h3>Roadbase Fill</h3>
+            <h3>Topsoil Fill</h3>
             <div class=""><!-- row justify-content-center -->
                 <!-- The name of the Form -->
                 <form id="TopsoilMaterial" action="" onsubmit="return false">
@@ -616,7 +616,7 @@
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
                         <div class="col-auto">
-                            <button class="btn btn-primary" onclick="roadbaseFillVol('FlagstoneMaterial')">
+                            <button class="btn btn-primary" onclick="topsoilFillVol('TopsoilMaterial')">
                                 Calculate
                             </button>
                         </div>
