@@ -107,8 +107,12 @@ function boulderWallVol(formID){
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
+    const lbsOfStone = cuYards * 2700;
+    const tonsOfStone = lbsOfStone/2000;
     $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
         +' <br><b>Cu Yards</b>' + cuYards);
+
+
     const amtOfStone = ((length * height * thickness)/27) * 1.25;
     console.log(amtOfStone);
     // return amtOfStone;
@@ -117,23 +121,59 @@ function boulderWallVol(formID){
 function flagstonePatioVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;
-    const height = capturedForm.Width * capturedForm.WidthMultiplier;
-    const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
+    const width = capturedForm.Width * capturedForm.WidthMultiplier;
+    const thickness = capturedForm.Depth;
 
-    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
-    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
-    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
-    const l = parseFloat(length);
-    const h = parseFloat(height);
-    const th = parseFloat(thickness);
+    /*
+    1″	    100+ sqft/ton
+    1 1/2″	80-100 sqft/ton
+    2″	    70-90 sqft/ton
+    2 1/2″	60-80 sqft/ton
     */
-    const cuInches = length * height * thickness;
-    const cuFeet = (length/12) * (height/12) * (thickness/12);
-    const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards</b>' + cuYards);
+    // Model problem 500 sq feet @ 1" 500/100 = 5 tons
+    console.log(thickness);
+    //  Calculate square feet
+    const sqInches = length * width;
+    var divisorMin;
+    var  divisorMax;
+
+    if (thickness === 1){
+        divisorMin = 100;
+        divisorMax = 100;
+    }
+    else if(thickness === 1.5){
+        divisorMin = 80;
+        divisorMax = 100;
+    }
+    else if(thickness === 2){
+        divisorMin = 80;
+        divisorMax = 90;
+    }
+    else if(thickness === 1.5){
+        divisorMin = 60;
+        divisorMax = 80;
+    }
+    else {
+        throw "You've entered an invalid number";
+    }
+
+
+
+    const sqFeet = sqInches * (1/144);
+    const flagstoneRange = [(sqFeet/divisorMin), (sqFeet/divisorMax)];
+
+    console.log(flagstoneRange);
+    const cuInches = length * width * thickness;
+    // const cuFeet = (length/12) * (height/12) * (thickness/12);
+    // const cuYards = cuFeet * (1/27);
+    $('#'+formID+'Result').html('<b> Sq. Inches: </b>' + sqInches +' <br><b>Sq Feet: </b>' + sqFeet
+        +' <br><b>Range: </b>' + flagstoneRange[0] + "-" + flagstoneRange[0] + " Tons");
 }
 
+/*
+*   Roadbase Fill is Calculated as Dirt?
+*
+* */
 function roadbaseFillVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;
@@ -146,13 +186,20 @@ function roadbaseFillVol(formID){
     const l = parseFloat(length);
     const h = parseFloat(height);
     const th = parseFloat(thickness);
+    2,565.415 lb/yd3
     */
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
+    const lbsOfFill = cuYards * 2565.415;
+    const tonsOfFill = lbsOfFill/2000;
     $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards: </b>' + cuYards);
+        +' <br><b>Cu Yards: </b>' + cuYards
+        +' <br><b>Lbs Of Fill: </b>' + lbsOfFill
+        +' <br><b>Tons Of Fill: </b>' + tonsOfFill);
 }
+
+
 function barkMulchVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;

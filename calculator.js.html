@@ -196,21 +196,27 @@
 
                     <!-- Thickness or Depth Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="FlagstoneThickness" class="col-sm-2 col-form-label">Flagstone Thickness:</label>
+                        <label for="FlagstoneThickness" class="col-sm-6 col-form-label">Flagstone Thickness (in Inches):</label>
                         <!-- Radioboxes feet and inches selectors -->
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline" hidden>
                             <label class="form-check-label">
                                 <input class="form-check-input" type="radio" name="FlagstoneThicknessUnits" id="FlagstoneThicknessUnitFt" value="12" checked> Feet
                             </label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline" hidden>
                             <label class="form-check-label">
                                 <input class="form-check-input" type="radio" name="FlagstoneThicknessUnits" id="FlagstoneThicknessUnitIn" value="1"> Inches
                             </label>
                         </div>
                         <!-- End of radioboxes -->
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="FlagstoneThickness" placeholder="Thickness in Inches" required>
+                            <select name="thickness" form="FlagstoneMaterial" id="FlagstoneThickness">
+                                <option value=1>1"</option>
+                                <option value=1.5>1.5"</option>
+                                <option value=2>2"</option>
+                                <option value=2.5>2.5"</option>
+                            </select>
+                            <!-- <input type="number" class="form-control" id="FlagstoneThickness" placeholder="Thickness in Inches" required> -->
                         </div>
                         <br>
                     </div>
