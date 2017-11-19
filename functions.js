@@ -108,9 +108,8 @@ function boulderWallVol(formID){
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
     const lbsOfStone = cuYards * 2700;
-    const tonsOfStone = lbsOfStone/2000;
-    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards</b>' + cuYards);
+    const tonsOfStone = ((length/12) * (height/12)) /20; // lbsOfStone/2000;
+    $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone);
 
 
     const amtOfStone = ((length * height * thickness)/27) * 1.25;
@@ -166,7 +165,7 @@ function flagstonePatioVol(formID){
     const cuInches = length * width * thickness;
     // const cuFeet = (length/12) * (height/12) * (thickness/12);
     // const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<b> Sq. Inches: </b>' + sqInches +' <br><b>Sq Feet: </b>' + sqFeet
+    $('#'+formID+'Result').html('<br><b>Sq Feet: </b>' + sqFeet
         +' <br><b>Range: </b>' + flagstoneRange[0] + "-" + flagstoneRange[0] + " Tons");
 }
 
@@ -193,8 +192,7 @@ function roadbaseFillVol(formID){
     const cuYards = cuFeet * (1/27);
     const lbsOfFill = cuYards * 2565.415;
     const tonsOfFill = lbsOfFill/2000;
-    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards: </b>' + cuYards
+    $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
         +' <br><b>Lbs Of Fill: </b>' + lbsOfFill
         +' <br><b>Tons Of Fill: </b>' + tonsOfFill);
 }
@@ -216,8 +214,7 @@ function barkMulchVol(formID){
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards: </b>' + cuYards);
+    $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
 }
 function stoneMulchVol(formID){
     const capturedForm = getFormVals(formID);
@@ -235,7 +232,7 @@ function stoneMulchVol(formID){
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
+    $('#'+formID+'Result').html('<br><b>Cu Feet: </b>' + cuFeet
         +' <br><b>Cu Yards: </b>' + cuYards);
 }
 
@@ -256,6 +253,5 @@ function topsoilFillVol(formID){
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<b> Cu. Inches: </b>' + cuInches +' <br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards</b>' + cuYards);
+    $('#'+formID+'Result').html('<br><b>Cu Yards</b>' + cuYards);
 }
