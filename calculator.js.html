@@ -18,12 +18,18 @@
             text-shadow: 2px 2px black;
             box-shadow: 7px 7px 3px #888888;
         }
+        .disclaimer{
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <h2>Materials Calculator</h2>
+    <!-- <h2>Materials Calculator</h2> -->
+    <div class="text-center">
+        <h4><i>Please visit our price list page for a complete list of materials and coverages.</i></h4>
+    </div>
     <!-- Navigation for the calculator -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist" >
         <li class="nav-item">
             <a data-toggle="tab" class="nav-link active" href="#stoneWall" aria-controls="home" aria-selected="true">Stone Walls</a>
         </li>
@@ -38,7 +44,7 @@
             <a data-toggle="tab" class="nav-link" href="#barkMulch" aria-controls="home" aria-selected="false">Bark Mulch</a>
         </li>
         <li class="nav-item">
-            <a data-toggle="tab" class="nav-link" href="#stoneMulch" aria-controls="home" aria-selected="false">Stone Mulch</a>
+            <a data-toggle="tab" class="nav-link" href="#stoneMulch" aria-controls="home" aria-selected="false">Decorative Rock</a>
         </li>
         <li class="nav-item">
             <a data-toggle="tab" class="nav-link" href="#topsoilTab" aria-controls="home" aria-selected="false">Topsoil</a>
@@ -54,7 +60,8 @@
         -->
         <div class="container tab-pane fade show active text-center" id="stoneWall" role="tabpanel" aria-labelledby="stoneWall-tab">
             <!-- Start of form wrapper -->
-            <h3>Stone Wall Supply</h3>
+            <h2>Stone Wall Supply</h2>
+            <h3>* Quantities vary depending on size and style of material used.</h3>
             <div class=""><!-- row justify-content-center -->
                 <!-- The name of the Form -->
                 <form id="WallMaterial" action="" onsubmit="return false">
@@ -62,7 +69,7 @@
                     </div>
                     <!-- Length Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="length" class="col-sm-2 col-form-label">Length:</label>
+                        <label for="WallLength" class="col-sm-2 col-form-label">Length:</label>
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
@@ -78,7 +85,7 @@
                         <!-- Start of input -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="length" placeholder="Length in Feet" required>
+                                <input type="number" class="form-control" id="WallLength" placeholder="Length in Ft or In" required>
                             </div>
                         </div>
 
@@ -102,7 +109,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="wallHeight" placeholder="Height in Feet" required>
+                                <input type="number" class="form-control" id="wallHeight" placeholder="Height in Ft or In" required>
                             </div>
                         </div>
 
@@ -162,7 +169,7 @@
 
         <div class="container tab-pane fade text-center" id="flagstone" role="tabpanel" aria-labelledby="stoneWall-tab">
             <!-- Start of form wrapper -->
-            <h3>Flagstone Patio</h3>
+            <h3>Flagstone Patio/Walkway</h3>
             <div class=""><!-- row justify-content-center -->
                 <!-- The name of the Form -->
                 <form id="FlagstoneMaterial" action="" onsubmit="return false">
@@ -170,7 +177,7 @@
                     </div>
                     <!-- Length Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="length" class="col-sm-2 col-form-label">Length:</label>
+                        <label for="PatioLength" class="col-sm-2 col-form-label">Length:</label>
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
@@ -186,7 +193,7 @@
                         <!-- Start of input -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="PatioLength" placeholder="Length in Feet" required>
+                                <input type="number" class="form-control" id="PatioLength" placeholder="Length in Ft or In" required>
                             </div>
                         </div>
 
@@ -210,7 +217,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="PatioWidth" placeholder="Height in Feet" required>
+                                <input type="number" class="form-control" id="PatioWidth" placeholder="Width in Ft or In" required>
                             </div>
                         </div>
 
@@ -257,11 +264,13 @@
                             <button class="btn btn-primary" onclick="flagstonePatioVol('FlagstoneMaterial')">
                                 Calculate
                             </button>
+                            <br>
                         </div>
                     </div>
                     <!-- End of Calc Button -->
                     <!-- Results field -->
                     <div class="calculationResult">
+                        <h4 class="disclaimer">* Weight will vary depending on joint width and waste from cutting/shaping flagstone</h4>
                         <h3 id="FlagstoneMaterialResult"></h3>
                     </div>
                     <!--End of Results -->
@@ -316,13 +325,13 @@
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="RoadbaseWidthUnits" id="RoadbaseWidthUnitIn" value="1"> Inches
+                                <input class="form-check-input" type="radio" name="RoadbaseWidthUnits" id="RoadbaseWidthUnitIn" value="36"> Yards
                             </label>
                         </div>
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="RoadbaseWidth" placeholder="Height in Feet" required>
+                                <input type="number" class="form-control" id="RoadbaseWidth" placeholder="Width in Ft or Yards" required>
                             </div>
                         </div>
                     </div>
@@ -366,6 +375,7 @@
                     <!-- End of Calc Button -->
                     <!-- Results field -->
                     <div class="calculationResult">
+                        <h4 class="disclaimer">Does not include loss for compaction.</h4>
                         <h3 id="RoadbaseMaterialResult"></h3>
                     </div>
                     <!--End of Results -->
@@ -405,7 +415,7 @@
                         <!-- Start of input -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="BarkMulchLength" placeholder="Length in Feet" required>
+                                <input type="number" class="form-control" id="BarkMulchLength" placeholder="Length in Ft or In" required>
                             </div>
                         </div>
                     </div>
@@ -428,7 +438,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="BarkMulchWidth" placeholder="Height in Feet" required>
+                                <input type="number" class="form-control" id="BarkMulchWidth" placeholder="Height in Ft or In" required>
                             </div>
                         </div>
                     </div>
@@ -451,7 +461,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="BarkMulchDepth" placeholder="Thickness in Inches" required>
+                                <input type="number" class="form-control" id="BarkMulchDepth" placeholder="Depth in In or Ft" required>
                             </div>
                         </div>
                         <br>
@@ -485,7 +495,8 @@
 
         <div class="container tab-pane fade text-center" id="stoneMulch" role="tabpanel" aria-labelledby="stoneWall-tab">
             <!-- Start of form wrapper -->
-            <h3>Stone Mulch Fill</h3>
+            <h3>Decorative Rock</h3>
+
             <div class=""><!-- row justify-content-center -->
                 <!-- The name of the Form -->
                 <form id="StoneMulchMaterial" action="" onsubmit="return false">
@@ -510,7 +521,7 @@
                         <!-- Start of input -->
                         <div class="row justify-content-md-center">
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="StoneMulchLength" placeholder="Length in Feet" required>
+                            <input type="number" class="form-control" id="StoneMulchLength" placeholder="Length in Ft or In" required>
                         </div>
                         </div>
                     </div>
@@ -533,7 +544,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="StoneMulchWidth" placeholder="Height in Feet" required>
+                                <input type="number" class="form-control" id="StoneMulchWidth" placeholder="Width in Ft or In" required>
                             </div>
                         </div>
                     </div>
@@ -541,7 +552,7 @@
 
                     <!-- Thickness or Depth Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="StoneMulchDepth" class="col-sm-2 col-form-label">Depth of Mulch:</label>
+                        <label for="StoneMulchDepth" class="col-sm-2 col-form-label">Depth of Rock Bed:</label>
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
@@ -556,7 +567,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="StoneMulchDepth" placeholder="Thickness in Inches" required>
+                                <input type="number" class="form-control" id="StoneMulchDepth" placeholder="Depth in In or Ft" required>
                             </div>
                         </div>
                         <br>
@@ -564,7 +575,7 @@
                     <!-- End of Thickness or Depth Element -->
 
                     <div class="form-group-row">
-
+                        <cite>Note: we recommend 3" depth minimum on new installs for proper coverage.</cite>
                     </div>
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
@@ -577,6 +588,7 @@
                     <!-- End of Calc Button -->
                     <!-- Results field -->
                     <div class="calculationResult">
+                        <h4 class="disclaimer">*Decorative Rock calculations are based off using ¾” or 1.5” rock.</h4>
                         <h3 id="StoneMulchMaterialResult"></h3>
                     </div>
                     <!--End of Results -->
@@ -614,7 +626,7 @@
                         <!-- Start of input -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="TopsoilLength" placeholder="Length in Feet" required>
+                                <input type="number" class="form-control" id="TopsoilLength" placeholder="Length in Ft or In" required>
                             </div>
                         </div>
                     </div>
@@ -637,7 +649,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="TopsoilWidth" placeholder="Height in Feet" required>
+                                <input type="number" class="form-control" id="TopsoilWidth" placeholder="Width in Ft or In" required>
                             </div>
                         </div>
                     </div>
@@ -660,7 +672,7 @@
                         <!-- End of radioboxes -->
                         <div class="row justify-content-md-center">
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="TopsoilDepth" placeholder="Thickness in Inches" required>
+                                <input type="number" class="form-control" id="TopsoilDepth" placeholder="Depth in In or Ft" required>
                             </div>
                         </div>
                         <br>

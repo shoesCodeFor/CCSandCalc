@@ -46,8 +46,7 @@ function formDump(idOfForm){
     catch (error){
         alert(error);
     }
-    var content  = $('#WallMaterialResult');
-    content.append('Test');
+
 }
 
 // Get form vals take our fields and make them into a 3-D object
@@ -97,19 +96,31 @@ function boulderWallVol(formID){
     const height = capturedForm.Width * capturedForm.WidthMultiplier;
     const thickness = capturedForm.Depth * capturedForm.DepthMultiplier;
 
-    /* ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
-    // From current Calculator: 10ft, 10ft, 4in = 2.3 tons
-    // ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
-    const l = parseFloat(length);
-    const h = parseFloat(height);
-    const th = parseFloat(thickness);
+    /* General Notes: wall base should be 2/3 of height
+
+       Not used:
+    *  ((𝒍𝒆𝒏𝒈𝒕𝒉 𝑿 𝒉𝒆𝒊𝒈𝒉𝒕 𝑿 𝒂𝒗𝒈 𝒔𝒊𝒛𝒆 𝒐𝒇 𝒓𝒐𝒄𝒌)÷27) X 1.25
+    *  From current Calculator: 10ft, 10ft, 4in = 2.3 tons
+    *  ((120 in X 120 in X 4in)/27) X 1.25 = 2,666
+    *  const l = parseFloat(length);
+    *  const h = parseFloat(height);
+    *  const th = parseFloat(thickness);
     */
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
     const lbsOfStone = cuYards * 2700;
-    const tonsOfStone = ((length/12) * (height/12)) /20; // lbsOfStone/2000;
-    $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone);
+    const tonsOfStoneMin = ((length/12) * (height/12)) /20; // lbsOfStone/2000;
+    const tonsOfStoneMax = tonsOfStoneMin * 1.6;
+    const tonsOfStone = [tonsOfStoneMin.toFixed(1), tonsOfStoneMax.toFixed(1)];
+
+    if(tonsOfStone[0] !== tonsOfStone[1]){
+        $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone[0] + " - " + tonsOfStone[1]);
+    }
+    else{
+        $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone[0] + " - " + tonsOfStone[1]);
+    }
+
 
 
     const amtOfStone = ((length * height * thickness)/27) * 1.25;
@@ -159,14 +170,21 @@ function flagstonePatioVol(formID){
 
 
     const sqFeet = sqInches * (1/144);
-    const flagstoneRange = [(sqFeet/divisorMin), (sqFeet/divisorMax)];
+    const flagstoneRange = [(sqFeet/divisorMax).toFixed(1), (sqFeet/divisorMin).toFixed(1)];
 
     console.log(flagstoneRange);
     const cuInches = length * width * thickness;
     // const cuFeet = (length/12) * (height/12) * (thickness/12);
     // const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<br><b>Sq Feet: </b>' + sqFeet
-        +' <br><b>Range: </b>' + flagstoneRange[0] + "-" + flagstoneRange[0] + " Tons");
+    if(flagstoneRange[0]===flagstoneRange[1]){
+        $('#'+formID+'Result').html('<br><b>Sq Feet: </b>' + sqFeet.toFixed(1)
+            +' <br><b>Range: </b>' + flagstoneRange[0] + " Estimated Tonnage");
+    }
+    else{
+        $('#'+formID+'Result').html('<br><b>Sq Feet: </b>' + sqFeet.toFixed(1)
+            +' <br><b>Range: </b>' + flagstoneRange[0] + " - " + flagstoneRange[1] + " Estimated Tonnage");
+    }
+
 }
 
 /*
@@ -191,13 +209,27 @@ function roadbaseFillVol(formID){
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
     const lbsOfFill = cuYards * 2565.415;
-    const tonsOfFill = lbsOfFill/2000;
-    $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
-        +' <br><b>Lbs Of Fill: </b>' + lbsOfFill
-        +' <br><b>Tons Of Fill: </b>' + tonsOfFill);
+    const lbsOfFillMax = lbsOfFill * 1.4;
+    const tonsOfFill = (lbsOfFill/2000).toFixed(1);
+    const tonsOfFillMax = (tonsOfFill * 1.06).toFixed(1);
+    // Need to account for compaction
+    if(tonsOfFill === tonsOfFillMax){
+        $('#'+formID+'Result').html('<br><b>Estimated Tons Needed: </b>' + tonsOfFill);
+    }
+    else{
+        $('#'+formID+'Result').html('<br><b>Estimated Tons Needed: </b>' + tonsOfFill + ' - ' + tonsOfFillMax);
+    }
+
 }
-
-
+/*
+Bark Mulch values
+CUBIC YARD COVERAGES
+75 sqft.@ 4” depth Examples 300/75=4  600/75=8
+100 sqft. @ 3" depth = 600/100=6
+150 sqft. @ 2" depth = 600/150=4
+200 sqft. @ 1 1/2" depth
+300 sqft. @ 1" depth = .9
+*/
 function barkMulchVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;
@@ -213,9 +245,18 @@ function barkMulchVol(formID){
     */
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
-    const cuYards = cuFeet * (1/27);
+    const cuYards = ((cuFeet * (1/27)) * 1.1).toFixed(1);
     $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
 }
+/* Stone Mulch - As per Brandon December 1st
+*  Calculation for sq ft 10ft X 6ft
+*  240 sqft. @ 1" depth 600sqFeet = 2.5 tons
+*  120 sqft. @2" depth 600sqFeet = 5 tons
+*  80 sqft. @ 3" depth 600sqFeet = 7.5 tons
+*  60 sqft. @ 4" depth 600sqFeet = 10 tons
+*  50 sqft. @ 5" depth 600sqFeet = 12 tons
+*  40 sqft. @ 6" depth 600sqFeet = 15  tons
+* */
 function stoneMulchVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;
@@ -229,11 +270,14 @@ function stoneMulchVol(formID){
     const h = parseFloat(height);
     const th = parseFloat(thickness);
     */
+
     const cuInches = length * height * thickness;
+    const sqFeet = ((length/12) * (height/12)).toFixed(1);
+    const sqYards = (sqFeet/0.1111).toFixed(1);
     const cuFeet = (length/12) * (height/12) * (thickness/12);
+    const tonnage = (sqFeet/40).toFixed(1);
     const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<br><b>Cu Feet: </b>' + cuFeet
-        +' <br><b>Cu Yards: </b>' + cuYards);
+    $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonnage +' - ' + (tonnage* 1.15).toFixed(1));
 }
 
 
@@ -252,6 +296,10 @@ function topsoilFillVol(formID){
     */
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
-    const cuYards = cuFeet * (1/27);
-    $('#'+formID+'Result').html('<br><b>Cu Yards</b>' + cuYards);
+    const cuYards =  (cuFeet * (1/27)).toFixed(1);
+    $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
 }
+
+const printVals = function(divID){
+    $('#'+divID+'Result').html('<br><b>Cu Yards</b>' + cuYards);
+};
