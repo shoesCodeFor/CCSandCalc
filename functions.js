@@ -280,6 +280,29 @@ function stoneMulchVol(formID){
     $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonnage +' - ' + (tonnage* 1.15).toFixed(1));
 }
 
+/*
+*  Customer provided weights per Cubic Yard
+*  Ex: Customer buys 240lbs of Cascade
+*  240/480 = .5 Cu Yards of Coverage
+*  AA Topsoil	2150
+*  A Topsoil	2150
+*  Top/Comp 3-1	2040
+*  Top/Cow 3-1	2040
+*  Tri Mix III	1900
+*  Planters Mix	1800
+*  Planting Bed Mix	1150
+*  Aged / Aspen Humus	750
+*  Cow Manure	1300
+*  Compost (Biocomp)	1300
+*  Cascade	480
+*  Cedar	480
+*  Coffee Metro	460
+*  Red,Gold,Brown Metro	420
+*  Play Ground Chips	280
+*
+* */
+
+
 
 function topsoilFillVol(formID){
     const capturedForm = getFormVals(formID);
@@ -297,7 +320,23 @@ function topsoilFillVol(formID){
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards =  (cuFeet * (1/27)).toFixed(1);
-    $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
+
+    /* Use jQuery to grab last value from Select list
+    *  so we don't break getFormVals();
+    */
+    const topsoilMultiplier = parseFloat($('#TopsoilSelector').val());
+    if(topsoilMultiplier > -1){
+        const materialWeight = cuYards * topsoilMultiplier;
+        $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
+            + '<br><b>Estimated Weight: </b>' + materialWeight);
+
+    }
+    else{
+        $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
+    }
+
+    console.log(topsoilMultiplier);
+
 }
 
 const printVals = function(divID){

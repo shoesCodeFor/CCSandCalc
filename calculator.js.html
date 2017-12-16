@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>CC Sand & Stone Materials Calculator</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <style>
         .nav-link.active{
-            background-color: #d6e5ff !important;
+            background-color: #008c9b !important;
+            color: white !important;
         }
         .nav-link{
             font-size: 1.3rem !important;
+            color: #008c9b !important;
         }
         .col-form-label{
             font-size: 1.2rem;
@@ -17,9 +21,22 @@
         .btn-primary{
             text-shadow: 2px 2px black;
             box-shadow: 7px 7px 3px #888888;
+            background-color: #8f3694;
+        }
+        .btn-primary:hover {
+            background-color: #813085;
+        }
+        .btn-primary:active {
+            background-color: #612464 !important;
         }
         .disclaimer{
             margin-top: 10px;
+        }
+        *{
+            font-family: 'PT Sans', sans-serif !important;
+        }
+        #TopsoilSelector{
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -657,7 +674,7 @@
 
                     <!-- Thickness or Depth Elements: Label, Radio and Input -->
                     <div class="form-group-row">
-                        <label for="TopsoilDepth" class="col-sm-2 col-form-label">Depth of Mulch:</label>
+                        <label for="TopsoilDepth" class="col-sm-2 col-form-label">Depth of Topsoil:</label>
                         <!-- Radioboxes feet and inches selectors -->
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
@@ -680,7 +697,30 @@
                     <!-- End of Thickness or Depth Element -->
 
                     <div class="form-group-row">
-
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <select name="TopsoilMedium" form="TopsoilMaterial" id="TopsoilSelector">
+                                    <option value=-1> Select a Soil Type (optional) </option>
+                                    <option value=2150> AA Topsoil </option>
+                                    <option value=2150> A Topsoil </option>
+                                    <option value=2040> Top/Comp 3-1 </option>
+                                    <option value=2040> Top/Cow 3-1 </option>
+                                    <option value=1900> Tri Mix III </option>
+                                    <option value=1150> Planter's Mix </option>
+                                    <option value=2040> Planting Bed Mix </option>
+                                    <option value=750> Aged / Aspen Humus </option>
+                                    <option value=1300> Cow Manure </option>
+                                    <option value=1300> Compost (Biocomp) </option>
+                                    <option value=480> Cascade </option>
+                                    <option value=480> Cedar </option>
+                                    <option value=460> Coffee Metro </option>
+                                    <option value=420> Red,Gold,Brown Metro </option>
+                                    <option value=280> Play Ground Chips </option>
+                                </select>
+                                <!-- <input type="number" class="form-control" id="FlagstoneThickness" placeholder="Thickness in Inches" required> -->
+                                <br>
+                            </div>
+                        </div>
                     </div>
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
                     <div class="form-group-row">
