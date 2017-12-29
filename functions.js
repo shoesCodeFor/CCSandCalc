@@ -19,19 +19,15 @@
 *   9 button.btn.btn-primary
 *
 *
-*
-* */
-
-/**
- *  FORM Polygon Objects have:
- *  Length
- *  LengthMultiplier
- *  Width
- *  WidthMultiplier
- *  Depth
- *  DepthMultiplier
- *  Volume in Cubic In (1728 per cubic feet)
- *  Volume in Cubic Ft (27 Cubic feet is Yard)
+*   FORM Polygon Objects have:
+*   Length
+*   LengthMultiplier
+*   Width
+*   WidthMultiplier
+*   Depth
+*   DepthMultiplier
+*   Volume in Cubic In (1728 per cubic feet)
+*   Volume in Cubic Ft (27 Cubic feet is Yard)
 **/
 
 var form = new Object();
@@ -120,9 +116,6 @@ function boulderWallVol(formID){
     else{
         $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone[0] + " - " + tonsOfStone[1]);
     }
-
-
-
     const amtOfStone = ((length * height * thickness)/27) * 1.25;
     console.log(amtOfStone);
     // return amtOfStone;
@@ -188,7 +181,8 @@ function flagstonePatioVol(formID){
 }
 
 /*
-*   Roadbase Fill is Calculated as Dirt?
+*   Roadbase Fill is Calculated as Cubic feet
+*   unless the user selects a type of material
 *
 * */
 function roadbaseFillVol(formID){
@@ -222,14 +216,20 @@ function roadbaseFillVol(formID){
 
 }
 /*
-Bark Mulch values
-CUBIC YARD COVERAGES
-75 sqft.@ 4” depth Examples 300/75=4  600/75=8
-100 sqft. @ 3" depth = 600/100=6
-150 sqft. @ 2" depth = 600/150=4
-200 sqft. @ 1 1/2" depth
-300 sqft. @ 1" depth = .9
-*/
+*   Bark Mulch values
+*   CUBIC YARD COVERAGES
+*   75 sqft.@ 4” depth Examples 300/75=4  600/75=8
+*   100 sqft. @ 3" depth = 600/100=6
+*   150 sqft. @ 2" depth = 600/150=4
+*   200 sqft. @ 1 1/2" depth
+*   300 sqft. @ 1" depth = .9
+*
+*   WEIGHTS:
+*   Cedar	480
+*   Coffee Metro	460
+*   Red,Gold,Brown Metro	420
+*   Play Ground Chips	280
+* */
 function barkMulchVol(formID){
     const capturedForm = getFormVals(formID);
     const length = capturedForm.Length * capturedForm.LengthMultiplier;
@@ -246,7 +246,28 @@ function barkMulchVol(formID){
     const cuInches = length * height * thickness;
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = ((cuFeet * (1/27)) * 1.1).toFixed(1);
+    /* Use jQuery to grab last value from Select list
+    *  so we don't break getFormVals();
+    */
+    const mulchMultiplier = parseFloat($('#MulchSelector').val());
     $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
+    if(mulchMultiplier > -1){
+        const materialWeight = cuYards * mulchMultiplier;
+        if(materialWeight > 2000){
+            const tonnage = convertToTons(materialWeight);
+            $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
+                + '<br><b>Estimated Weight: </b>' + tonnage + ' tons');
+        }
+        else{
+            $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
+                + '<br><b>Estimated Weight: </b>' + materialWeight);
+        }
+
+    }
+    else{
+        $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
+    }
+
 }
 /* Stone Mulch - As per Brandon December 1st
 *  Calculation for sq ft 10ft X 6ft
@@ -327,18 +348,26 @@ function topsoilFillVol(formID){
     const topsoilMultiplier = parseFloat($('#TopsoilSelector').val());
     if(topsoilMultiplier > -1){
         const materialWeight = cuYards * topsoilMultiplier;
-        $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
-            + '<br><b>Estimated Weight: </b>' + materialWeight);
-
+        if(materialWeight > 2000){
+            const tonnage = convertToTons(materialWeight);
+            $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
+                + '<br><b>Estimated Weight: </b>' + tonnage + ' tons');
+        }
+        else{
+            $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards
+                + '<br><b>Estimated Weight: </b>' + materialWeight);
+        }
     }
     else{
         $('#'+formID+'Result').html('<br><b>Cu Yards: </b>' + cuYards);
     }
-
     console.log(topsoilMultiplier);
-
 }
 
 const printVals = function(divID){
     $('#'+divID+'Result').html('<br><b>Cu Yards</b>' + cuYards);
 };
+
+function convertToTons(lbs){
+    return (lbs/2000).toFixed(2);
+}

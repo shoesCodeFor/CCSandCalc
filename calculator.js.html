@@ -35,7 +35,7 @@
         *{
             font-family: 'PT Sans', sans-serif !important;
         }
-        #TopsoilSelector{
+        #TopsoilSelector, #MulchSelector{
             margin-bottom: 10px;
         }
     </style>
@@ -486,6 +486,21 @@
                     <!-- End of Thickness or Depth Element -->
 
                     <div class="form-group-row">
+                        <div class="row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <select name="MulchMedium" form="BarkMulchMaterial" id="MulchSelector">
+                                    <option value=-1> Select a Soil Type (optional) </option>
+                                    <option value=480> Cedar </option>
+                                    <option value=460> Coffee Metro </option>
+                                    <option value=420> Red,Gold,Brown Metro </option>
+                                    <option value=280> Play Ground Chips </option>
+                                </select>
+                                <!-- <input type="number" class="form-control" id="FlagstoneThickness" placeholder="Thickness in Inches" required> -->
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
 
                     </div>
                     <!-- Calculate button (Will kick off functions to perform calcs) -->
@@ -712,10 +727,6 @@
                                     <option value=1300> Cow Manure </option>
                                     <option value=1300> Compost (Biocomp) </option>
                                     <option value=480> Cascade </option>
-                                    <option value=480> Cedar </option>
-                                    <option value=460> Coffee Metro </option>
-                                    <option value=420> Red,Gold,Brown Metro </option>
-                                    <option value=280> Play Ground Chips </option>
                                 </select>
                                 <!-- <input type="number" class="form-control" id="FlagstoneThickness" placeholder="Thickness in Inches" required> -->
                                 <br>
