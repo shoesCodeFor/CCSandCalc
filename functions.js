@@ -106,16 +106,20 @@ function boulderWallVol(formID){
     const cuFeet = (length/12) * (height/12) * (thickness/12);
     const cuYards = cuFeet * (1/27);
     const lbsOfStone = cuYards * 2700;
-    const tonsOfStoneMin = ((length/12) * (height/12)) /20; // lbsOfStone/2000;
+    const tonsOfStoneMin = ((length/12) * (height/12)) / 25; // lbsOfStone/2000;
     const tonsOfStoneMax = tonsOfStoneMin * 1.6;
     const tonsOfStone = [tonsOfStoneMin.toFixed(1), tonsOfStoneMax.toFixed(1)];
 
+    /* Deprecated Calc
     if(tonsOfStone[0] !== tonsOfStone[1]){
         $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone[0] + " - " + tonsOfStone[1]);
     }
     else{
         $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone[0] + " - " + tonsOfStone[1]);
     }
+    */
+    // Just take the high estimate
+    $('#'+formID+'Result').html('<br><b>Estimated Tons: </b>' + tonsOfStone[1]);
     const amtOfStone = ((length * height * thickness)/27) * 1.25;
     console.log(amtOfStone);
     // return amtOfStone;
