@@ -144,7 +144,7 @@ function flagstonePatioVol(formID){
         divisorMin = 120;
         divisorMax = 120;
     }
-    else if(thickness === 2){
+    else if(thickness >= 2){
         divisorMin = 70;
         divisorMax = 70;
     }
