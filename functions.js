@@ -141,20 +141,12 @@ function flagstonePatioVol(formID){
     var  divisorMax;
 
     if (thickness === 1){
-        divisorMin = 100;
-        divisorMax = 100;
-    }
-    else if(thickness === 1.5){
-        divisorMin = 80;
-        divisorMax = 100;
+        divisorMin = 120;
+        divisorMax = 120;
     }
     else if(thickness === 2){
-        divisorMin = 80;
-        divisorMax = 90;
-    }
-    else if(thickness === 1.5){
-        divisorMin = 60;
-        divisorMax = 80;
+        divisorMin = 70;
+        divisorMax = 70;
     }
     else {
         throw "You've entered an invalid number";
